@@ -1,34 +1,42 @@
-
 package ija.ija2023.homework1.common;
-public class Position extends Object{
+
+public class Position extends Object {
 
     private int col;
     private int row;
-    public static Position Position(int row, int col){
-        Position.row = row;
-        Position.col = col;
+
+    public Position(int row, int col) {
+        this.row = row;
+        this.col = col;
     }
+
+    public static Position create(int row, int col) {
+        return new Position(row, col);
+    }
+
     @Override
-    public boolean equals(Object o){
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Position position = (Position) o;
         return this.col == position.getCol() && this.row == position.getRow();
     }
 
-    int getCol(){
+    public int getCol() {
         return col;
     }
 
-    int getRow(){
+    public int getRow() {
         return row;
     }
 
-    int hashCode(){
-        return 0;
+    @Override
+    public int hashCode() {
+        return 17 * row + col;
     }
 
-    String toString(){
-        return "Position: " + Position.row + " " + Position.col;
+    @Override
+    public String toString() {
+        return "Position: (" + row + ", " + col + ")";
     }
 }
